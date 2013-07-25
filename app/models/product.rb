@@ -6,4 +6,5 @@ class Product < ActiveRecord::Base
     with: %r{\.(gif|jpg|png)\z}i,
     message: 'はgif、jpg、png画像のURLでなければなりません'
   }
+  validates_length_of :title, minimum: 10, too_short: 'You must 10'
 end

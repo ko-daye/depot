@@ -72,4 +72,12 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal I18n.translate('activerecord.errors.messages.taken'),
                  product.errors[:title].join('; ')
   end
+  
+  test "is length greater than 10" do
+    product = products(:len)
+    
+    assert product.invalid?
+    assert_equal "You must 10", 
+          product.errors[:title].join('; ')
+  end
 end
