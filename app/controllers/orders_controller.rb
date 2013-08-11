@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.paginate :page=>params[:page], :order=>'created_at desc',
+      :per_page => 20
   end
 
   # GET /orders/1
@@ -14,6 +15,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    p "### order/new start ###"
     @cart = current_cart
     if @cart.line_items.empty?
       redirect_to store_url, notice: "カートは空です"
@@ -21,6 +23,7 @@ class OrdersController < ApplicationController
     end
 
     @order = Order.new
+    p "### order/new end ###"
   end
 
   # GET /orders/1/edit
