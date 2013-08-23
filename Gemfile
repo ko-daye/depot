@@ -52,3 +52,6 @@ gem 'capistrano', group: :production
 # gem 'debugger', group: [:development, :test]
 
 gem 'will_paginate'
+
+gem 'therubyracer'
+
